@@ -12,47 +12,65 @@ Here are all the challenges if you fancy having a look: [All challenges](.challe
 My attempt at each challenge can be found within [`src/weekly-challenges.test.ts`](src/weekly-challenges.test.ts)
 
 
-## 24/03/2023 - weekly challenge
+## 31/03/2023 - weekly challenge
+## Bitwise Operators
+![alt_text](.challenges/images/js.png "image_tooltip")
 
-### Balanced Brackets
+Write a function that takes two integers as input and returns the bitwise **AND** of all the integers between those two integers, inclusive.
 
-![](.challenges/images/js.png)
+For example, given the input integers 5 and 7, the function should return the result of the bitwise AND operation between 5 and 6 and 7, which is 5. In binary form, this is:
 
-Write a function that takes a string of brackets as input and returns true if the string is well-formed, and false otherwise.
 
-For example, given the input string `{[()]}`, the function should return true. Given the input string `{[()]}]`, the function
-should return false.
+```
+5:  0b101
+6:  0b110
+7:  0b111
+AND result: 0b100 (4 in decimal)
+```
 
-You can use the isBalanced function I provided earlier as a starting point. Here's an example unit tests using the Jest testing
-framework:
 
-```ts
-const isBalanced = require('./isBalanced');
+\
+To complete this task, you'll need to use the bitwise AND operator (&) in a loop to compute the AND of each integer between the two input integers. Here's a skeleton implementation to get you started:
 
-test('well-formed string returns true', () => {
-  expect(isBalanced('{[(test)]}')).toBe(true);
-});
 
-test('malformed string returns false', () => {
-  expect(isBalanced('{[()]}]')).toBe(false);
-});
+```
+function bitwiseAndInRange(start, end) {
+  let result = start;
+  for (let i = start + 1; i <= end; i++) {
+    // perform the bitwise AND operation between result and i here
+    // update the result variable accordingly
+  }
+  return result;
+}
+```
 
-test('empty string returns true', () => {
-  expect(isBalanced('')).toBe(true);
-});
 
-test('string with only opening brackets returns false', () => {
-  expect(isBalanced('(((')).toBe(false);
-});
+You can test your implementation with different input values to make sure it works correctly. Keep in mind that bitwise operators can be tricky to work with, so take your time and double-check your code.
 
-test('string with only closing brackets returns false', () => {
-  expect(isBalanced(')))')).toBe(false);
-});
+Here are some unit tests to pass:
 
-test('string with mixed brackets returns false', () => {
-  expect(isBalanced('{[(]}')).toBe(false);
+
+```
+describe('bitwiseAndInRange', () => {
+  it('should return the bitwise AND of all integers between 0 and 2 (inclusive)', () => {
+    expect(bitwiseAndInRange(0, 2)).toBe(0);
+  });
+
+  it('should return the bitwise AND of all integers between 1 and 3 (inclusive)', () => {
+    expect(bitwiseAndInRange(1, 3)).toBe(1);
+  });
+
+  it('should return the bitwise AND of all integers between 2 and 5 (inclusive)', () => {
+    expect(bitwiseAndInRange(2, 5)).toBe(0);
+  });
+
+  it('should return the bitwise AND of all integers between 10 and 15 (inclusive)', () => {
+    expect(bitwiseAndInRange(10, 15)).toBe(10);
+  });
+
+  it('should return the bitwise AND of all integers between 0 and 65535 (inclusive)', () => {
+    expect(bitwiseAndInRange(0, 65535)).toBe(0);
+  });
 });
 ```
 
-This test suite covers a range of different input strings, including well-formed and malformed strings, empty strings, and strings
-with only opening or closing brackets. You can add more test cases as needed to cover different edge cases.
