@@ -30,20 +30,7 @@ AND result: 0b100 (4 in decimal)
 
 
 \
-To complete this task, you'll need to use the bitwise AND operator (&) in a loop to compute the AND of each integer between the two input integers. Here's a skeleton implementation to get you started:
-
-
-```
-function bitwiseAndInRange(start, end) {
-  let result = start;
-  for (let i = start + 1; i <= end; i++) {
-    // perform the bitwise AND operation between result and i here
-    // update the result variable accordingly
-  }
-  return result;
-}
-```
-
+To complete this task, you'll need to use the bitwise AND operator (&) in a loop to compute the AND of each integer between the two input integers.
 
 You can test your implementation with different input values to make sure it works correctly. Keep in mind that bitwise operators can be tricky to work with, so take your time and double-check your code.
 
