@@ -1,14 +1,15 @@
-import { classifyArrayElements } from './challenges/weekly/classifyArrayElements'
-import { fib100 } from './challenges/weekly/fib'
-import { fibonacciNumber } from './challenges/weekly/fibonacciNumber'
-import { findLongestAlphabetLike } from './challenges/weekly/findLongestAlphabetLike'
-import { isBalanced } from './challenges/weekly/isBalanced'
-import { isPalindrome } from './challenges/weekly/isPalindrome'
-import { printFibonacci } from './challenges/weekly/printFibonacci'
+import {classifyArrayElements} from './challenges/weekly/classifyArrayElements'
+import {fib100} from './challenges/weekly/fib'
+import {fibonacciNumber} from './challenges/weekly/fibonacciNumber'
+import {findLongestAlphabetLike} from './challenges/weekly/findLongestAlphabetLike'
+import {isBalanced} from './challenges/weekly/isBalanced'
+import {isPalindrome} from './challenges/weekly/isPalindrome'
+import {printFibonacci} from './challenges/weekly/printFibonacci'
 import {
     rotate2DMatrixClockwise,
     rotate3x3_2DMatrixClockwise,
 } from './challenges/weekly/rotate2DMatrixClockwise'
+import {bitwiseAndInRange} from "./challenges/weekly/bitwiseAndInRange";
 
 describe('Weekly Challenges', () => {
     it('Should return printFibonacci', () => {
@@ -157,3 +158,31 @@ describe('Weekly Challenges - Balanced Brackets', () => {
         expect(isBalanced('{[(]}')).toBe(false)
     })
 })
+
+
+describe('Weekly Challenges - Bitwise Operators', () => {
+    it('should throw error', () => {
+        expect(() => bitwiseAndInRange(0, 2, -10)).toThrow('bitLength must be a positive integer')
+        expect(() => bitwiseAndInRange(3, 2)).toThrow('Start is larger than end')
+    });
+
+    it('should return the bitwise AND of all integers between 0 and 2 (inclusive)', () => {
+        expect(bitwiseAndInRange(0, 2)).toBe(0);
+    });
+
+    it('should return the bitwise AND of all integers between 1 and 3 (inclusive)', () => {
+        expect(bitwiseAndInRange(1, 3)).toBe(1);
+    });
+
+    it('should return the bitwise AND of all integers between 2 and 5 (inclusive)', () => {
+        expect(bitwiseAndInRange(2, 5)).toBe(0);
+    });
+
+    it('should return the bitwise AND of all integers between 10 and 15 (inclusive)', () => {
+        expect(bitwiseAndInRange(10, 15)).toBe(10);
+    });
+
+    it('should return the bitwise AND of all integers between 0 and 65535 (inclusive)', () => {
+        expect(bitwiseAndInRange(0, 65535)).toBe(0);
+    });
+});
