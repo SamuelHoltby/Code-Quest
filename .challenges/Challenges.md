@@ -35,3 +35,4 @@ up-to-date with the latest developments in JavaScript, TypeScript, and React.
 10. [Memoization Function for Expensive Operations ](memoization.md)
 11. [Function throttler](function-throttler.md)
 12. [Roman numeral converter ](roman-numeral-converter.md)
+13. [Coin Change](coin-change.md)
