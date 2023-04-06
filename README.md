@@ -13,4 +13,4 @@ My attempt at each challenge can be found within [`src/weekly-challenges.test.ts
 
 
 ## 31/03/2023 - weekly challenge
-## [Morse code translator](morse-code-translator.md)
+## [Morse code translator](./challenges/morse-code-translator.md)
