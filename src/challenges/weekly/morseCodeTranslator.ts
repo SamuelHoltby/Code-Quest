@@ -1,4 +1,4 @@
-const MORSECODE_MAP: Record<string, string> = {
+const MORSE_CODE_DICT: Record<string, string> = {
     'A': '.-',
     'B': '-...',
     'C': '-.-.',
@@ -38,14 +38,7 @@ const MORSECODE_MAP: Record<string, string> = {
     ' ': '/'
 };
 
-export function morseCodeTranslator(text: string): string {
-    if (!text) {
-        throw new Error('text is empty')
-    }
-
-    const morseCode: string[] =
-        text.split('')
-            .map(character => MORSECODE_MAP?.[character.toUpperCase()] ?? '')
-
-    return morseCode.join(' ')
-}
+export const morseCodeTranslator = (text: string): string =>
+    [...text]
+        .map(character => MORSE_CODE_DICT?.[character.toUpperCase()] ?? '')
+        .join(' ');
