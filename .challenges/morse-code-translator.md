@@ -44,7 +44,7 @@ describe('morseCodeTranslator', () => {
   });
   
   it('should include a slash character between each word', () => {
-    expect(morseCodeTranslator('sos please')).toBe('... --- ... / .--. .-.. . ... .');
+    expect(morseCodeTranslator('sos please')).toBe('... --- ... / .--. .-.. . .- ... .');
     expect(morseCodeTranslator('mayday mayday')).toBe('-- .- -.-- -.. .- -.-- / -- .- -.-- -.. .- -.--');
   });
 });

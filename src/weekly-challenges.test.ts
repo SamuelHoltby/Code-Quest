@@ -10,6 +10,7 @@ import {
     rotate3x3_2DMatrixClockwise,
 } from './challenges/weekly/rotate2DMatrixClockwise'
 import {bitwiseAndInRange} from "./challenges/weekly/bitwiseAndInRange";
+import {morseCodeTranslator} from "./challenges/weekly/morseCodeTranslator";
 
 describe('Weekly Challenges', () => {
     it('Should return printFibonacci', () => {
@@ -162,6 +163,7 @@ describe('Weekly Challenges - Balanced Brackets', () => {
 
 describe('Weekly Challenges - Bitwise Operators', () => {
     it('should throw error', () => {
+        // @ts-ignore
         expect(() => bitwiseAndInRange(0, 2, -10)).toThrow('bitLength must be a positive integer')
         expect(() => bitwiseAndInRange(3, 2)).toThrow('Start is larger than end')
     });
@@ -184,5 +186,28 @@ describe('Weekly Challenges - Bitwise Operators', () => {
 
     it('should return the bitwise AND of all integers between 0 and 65535 (inclusive)', () => {
         expect(bitwiseAndInRange(0, 65535)).toBe(0);
+    });
+});
+
+describe('morseCodeTranslator', () => {
+    it('should return the Morse code equivalent of a single letter', () => {
+        expect(morseCodeTranslator('a')).toBe('.-');
+        expect(morseCodeTranslator('b')).toBe('-...');
+        expect(morseCodeTranslator('c')).toBe('-.-.');
+    });
+
+    it('should return the Morse code equivalent of a word', () => {
+        expect(morseCodeTranslator('hello')).toBe('.... . .-.. .-.. ---');
+        expect(morseCodeTranslator('world')).toBe('.-- --- .-. .-.. -..');
+    });
+
+    it('should include a space character between each letter', () => {
+        expect(morseCodeTranslator('sos')).toBe('... --- ...');
+        expect(morseCodeTranslator('help')).toBe('.... . .-.. .--.');
+    });
+
+    it('should include a slash character between each word', () => {
+        expect(morseCodeTranslator('sos please')).toBe('... --- ... / .--. .-.. . .- ... .');
+        expect(morseCodeTranslator('mayday mayday')).toBe('-- .- -.-- -.. .- -.-- / -- .- -.-- -.. .- -.--');
     });
 });
