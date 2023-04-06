@@ -12,5 +12,5 @@ Here are all the challenges if you fancy having a look: [All challenges](.challe
 My attempt at each challenge can be found within [`src/weekly-challenges.test.ts`](src/weekly-challenges.test.ts)
 
 
-## 31/03/2023 - weekly challenge
+## 07/04/2023 - weekly challenge
 ## [Morse code translator](.challenges/morse-code-translator.md)
