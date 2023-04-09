@@ -10,7 +10,7 @@ import {
     rotate3x3_2DMatrixClockwise,
 } from './challenges/weekly/rotate2DMatrixClockwise'
 import {bitwiseAndInRange} from "./challenges/weekly/bitwiseAndInRange";
-import {morseCodeTranslator} from "./challenges/weekly/morseCodeTranslator";
+import {morseCodeToString, morseCodeTranslator} from "./challenges/weekly/morseCodeTranslator";
 
 describe('Weekly Challenges', () => {
     it('Should return printFibonacci', () => {
@@ -209,5 +209,29 @@ describe('morseCodeTranslator', () => {
     it('should include a slash character between each word', () => {
         expect(morseCodeTranslator('sos please')).toBe('... --- ... / .--. .-.. . .- ... .');
         expect(morseCodeTranslator('mayday mayday')).toBe('-- .- -.-- -.. .- -.-- / -- .- -.-- -.. .- -.--');
+    });
+});
+
+describe('morseCodeToString', () => {
+    it('should return the Morse code equivalent of a single letter', () => {
+        expect(morseCodeToString('.-')).toBe('a');
+        expect(morseCodeToString('-...')).toBe('b');
+        expect(morseCodeToString('-.-.')).toBe('c');
+    });
+
+    it('should return the Morse code equivalent of a word', () => {
+        expect(morseCodeToString('.... . .-.. .-.. ---')).toBe('hello');
+        expect(morseCodeToString('.-- --- .-. .-.. -..')).toBe('world');
+    });
+
+    it('should include a space character between each letter', () => {
+        expect(morseCodeToString('... --- ...')).toBe('sos');
+        expect(morseCodeToString('.... . .-.. .--.')).toBe('help');
+    });
+
+
+    it('should include a slash character between each word', () => {
+        expect(morseCodeToString('... --- ... / .--. .-.. . .- ... .')).toBe('sos please');
+        expect(morseCodeToString('-- .- -.-- -.. .- -.-- / -- .- -.-- -.. .- -.--')).toBe('mayday mayday');
     });
 });

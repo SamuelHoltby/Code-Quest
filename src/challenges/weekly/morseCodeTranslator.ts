@@ -1,30 +1,30 @@
 const MORSE_CODE_DICT: Record<string, string> = {
-    'A': '.-',
-    'B': '-...',
-    'C': '-.-.',
-    'D': '-..',
-    'E': '.',
-    'F': '..-.',
-    'G': '--.',
-    'H': '....',
-    'I': '..',
-    'J': '.---',
-    'K': '-.-',
-    'L': '.-..',
-    'M': '--',
-    'N': '-.',
-    'O': '---',
-    'P': '.--.',
-    'Q': '--.-',
-    'R': '.-.',
-    'S': '...',
-    'T': '-',
-    'U': '..-',
-    'V': '...-',
-    'W': '.--',
-    'X': '-..-',
-    'Y': '-.--',
-    'Z': '--..',
+    'a': '.-',
+    'b': '-...',
+    'c': '-.-.',
+    'd': '-..',
+    'e': '.',
+    'f': '..-.',
+    'g': '--.',
+    'h': '....',
+    'i': '..',
+    'j': '.---',
+    'k': '-.-',
+    'l': '.-..',
+    'm': '--',
+    'n': '-.',
+    'o': '---',
+    'p': '.--.',
+    'q': '--.-',
+    'r': '.-.',
+    's': '...',
+    't': '-',
+    'u': '..-',
+    'v': '...-',
+    'w': '.--',
+    'x': '-..-',
+    'y': '-.--',
+    'z': '--..',
     '0': '-----',
     '1': '.----',
     '2': '..---',
@@ -40,5 +40,14 @@ const MORSE_CODE_DICT: Record<string, string> = {
 
 export const morseCodeTranslator = (text: string): string =>
     [...text]
-        .map(character => MORSE_CODE_DICT?.[character.toUpperCase()] ?? '')
+        .map(character => MORSE_CODE_DICT?.[character] ?? '')
         .join(' ');
+
+export const morseCodeToString = (morseCode: string): string => {
+    const morseCodeDictArray = Object.entries(MORSE_CODE_DICT).map(([char, code]) => [code, char])
+    const morseCodeDict = Object.fromEntries(morseCodeDictArray)
+
+    return morseCode.split(' ')
+        .map(code => morseCodeDict?.[code] ?? '')
+        .join('');
+}
