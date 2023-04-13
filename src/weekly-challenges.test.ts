@@ -11,6 +11,7 @@ import {
 } from './challenges/weekly/rotate2DMatrixClockwise'
 import {bitwiseAndInRange} from "./challenges/weekly/bitwiseAndInRange";
 import {morseCodeToString, morseCodeTranslator} from "./challenges/weekly/morseCodeTranslator";
+import {resolveFunctionValue} from "./challenges/weekly/recursiveFunctionValue";
 
 describe('Weekly Challenges', () => {
     it('Should return printFibonacci', () => {
@@ -189,7 +190,7 @@ describe('Weekly Challenges - Bitwise Operators', () => {
     });
 });
 
-describe('morseCodeTranslator', () => {
+describe('Weekly challenge - morseCodeTranslator', () => {
     it('should return the Morse code equivalent of a single letter', () => {
         expect(morseCodeTranslator('a')).toBe('.-');
         expect(morseCodeTranslator('b')).toBe('-...');
@@ -212,7 +213,7 @@ describe('morseCodeTranslator', () => {
     });
 });
 
-describe('morseCodeToString', () => {
+describe('Weekly challenge - morseCodeToString', () => {
     it('should return the Morse code equivalent of a single letter', () => {
         expect(morseCodeToString('.-')).toBe('a');
         expect(morseCodeToString('-...')).toBe('b');
@@ -234,4 +235,38 @@ describe('morseCodeToString', () => {
         expect(morseCodeToString('... --- ... / .--. .-.. . .- ... .')).toBe('sos please');
         expect(morseCodeToString('-- .- -.-- -.. .- -.-- / -- .- -.-- -.. .- -.--')).toBe('mayday mayday');
     });
+});
+
+describe('Weekly challenge - Recursive Function Value Resolver', () => {
+
+    it('should return the input value if not a function', () => {
+        const val = resolveFunctionValue(5);
+        expect(val).toBe(5);
+    });
+
+    it('should call the function and return its value if the input is a function', () => {
+        const fn = jest.fn(() => 42);
+        const val = resolveFunctionValue(fn);
+        expect(fn).toHaveBeenCalledTimes(1);
+        expect(val).toBe(42);
+    });
+
+    it('should handle functions that return other functions', () => {
+        const fn1 = jest.fn(() => () => 42);
+        const fn2 = jest.fn(() => fn1);
+        const val = resolveFunctionValue(fn2);
+        expect(fn2).toHaveBeenCalledTimes(1);
+        expect(fn1).toHaveBeenCalledTimes(1);
+        expect(val).toBe(42);
+    });
+
+    it('should handle deeply nested functions', () => {
+        const fn1 = jest.fn(() => () => () => 42);
+        const fn2 = jest.fn(() => fn1);
+        const val = resolveFunctionValue(fn2);
+        expect(fn2).toHaveBeenCalledTimes(1);
+        expect(fn1).toHaveBeenCalledTimes(1);
+        expect(val).toBe(42);
+    });
+
 });
